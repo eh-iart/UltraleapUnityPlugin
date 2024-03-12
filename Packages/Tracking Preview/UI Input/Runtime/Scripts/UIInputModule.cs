@@ -203,8 +203,14 @@ namespace Leap.Unity.InputModule
             _projectionOriginProvider?.Process();
 
             // Begin Processing Each Hand/Pointer
-            _pointerLeft.Process(GetHand(Chirality.Left), _projectionOriginProvider);
-            _pointerRight.Process(GetHand(Chirality.Right), _projectionOriginProvider);
+            if (_pointerLeft.isActiveAndEnabled)
+            {
+                _pointerLeft.Process(GetHand(Chirality.Left), _projectionOriginProvider);
+            }
+            if (_pointerRight.isActiveAndEnabled)
+            {
+                _pointerRight.Process(GetHand(Chirality.Right), _projectionOriginProvider);
+            }
         }
 
         /// <summary>
